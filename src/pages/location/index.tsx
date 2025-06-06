@@ -159,8 +159,9 @@ const Locations = () => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {item.name}
-                  </TableCell>
+  {item.name.replace(/\w\S*/g, (word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())}
+</TableCell>
+
                   <TableCell align="right">
                     <IconButton
                       aria-label="edit"

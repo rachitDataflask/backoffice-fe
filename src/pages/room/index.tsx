@@ -32,6 +32,12 @@ const Rooms = () => {
   const { data: roomDataList, isFetching } = useGetRoomsListQuery({});
   const [deleteRooms] = useDeleteRoomsMutation();
 
+  const toTitleCase = (text: string): string =>
+  text.replace(/\w\S*/g, (word: string) =>
+    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  );
+
+
   const handleRouteAddRoom = () => {
     setOpen(true);
     setRoomData({});
@@ -108,12 +114,13 @@ const Rooms = () => {
                     key={index}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row" className="lowercase">
-                      {item.name}
-                    </TableCell>
-                    <TableCell component="th" scope="row" className="lowercase">
-                      {item.description}
-                    </TableCell>
+                   <TableCell component="th" scope="row">
+  {toTitleCase(item.name)}
+</TableCell>
+<TableCell component="th" scope="row">
+  {toTitleCase(item.description)}
+</TableCell>
+
                     <TableCell align="right">
                       <IconButton
                         aria-label="edit"

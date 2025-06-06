@@ -197,7 +197,7 @@ const AddProducts = (props: any) => {
                     { label: "HP", value: "hp" },
                   ]}
                   getOptionLabel={(option) => option?.label || ""}
-                  isOptionEqualToValue={(option, value) =>
+                  isOptionEqualToValue={(option: { value: any; }, value: { value: any; }) =>
                     option?.value === value?.value
                   }
                   label="Unit"

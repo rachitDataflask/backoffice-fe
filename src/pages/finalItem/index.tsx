@@ -3,6 +3,9 @@ import { useForm, FormProvider } from "react-hook-form";
 import RHFAutocomplete from "../../components/RHF/RHFAutocomplete";
 import { useState } from "react";
 import RHFTextField from "../../components/RHF/RHFTextField";
+import IconButton from "@mui/material/IconButton";
+import PlusIcon from "@mui/icons-material/Add"; 
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   useGetBuildingListQuery,
@@ -17,6 +20,39 @@ import {
 import { toast } from "react-toastify";
 
 const FinalItem = () => {
+const unitOptionsBySubServiceName: Record<string, { label: string; value: string }[]> = {
+  // ─── Electrical ───
+  "Lighting":           [{ label: "Watt", value: "Watt" }],
+  "Power":       [{ label: "Amp",  value: "Amp"  }],
+  "Containment":        [{ label: "Core",   value: "Core"   }],
+  "Equipment":        [{ label: "KW",   value: "KW"   }],
+
+  // ─── HVAC ───
+  "Chilled Water System": [{ label: "TR", value: "TR" }],
+  "VRF / VRV":           [
+                           { label: "TR", value: "TR" },
+                           { label: "HP", value: "HP" },
+                         ],
+  "Direct Expansion":     [{ label: "TR", value: "TR" }],
+  "Ventilation":   [{ label: "CFM", value: "CFM" }],
+
+  // ─── Fire Fighting ───
+  "Hydrant System":       [{ label: "mm", value: "mm" }],
+  "Sprinkler System":     [{ label: "mm", value: "mm" }],
+  "Fire Extinguisher":    [{ label: "Kg", value: "Kg" }],
+
+  // ─── Plumbing ───
+  "Water Supply":         [{ label: "Lpm", value: "Lpm" }],
+  "Drainage":      [{ label: "Lpm", value: "Lpm" }],
+  "Pump Room Access":     [{ label: "Lpm", value: "Lpm" }],
+  "Piping System":        [{ label: "Lpm", value: "Lpm" }],
+};
+// ↑↑↑ end REPLACEMENT ↑↑↑
+
+
+    // new state to hold all added capacities
+  const [capacities, setCapacities] = useState<number[]>([]);
+
   const methods = useForm();
   const { watch, setValue, reset } = methods;
   const methods_2 = useForm();
@@ -33,11 +69,22 @@ const FinalItem = () => {
   );
 
   const selectedSubService = watch("sub_service");
+  
   const subServiceID = selectedSubService?.value;
-  const itemsById = useGetItemsListByIDQuery(
+   const {
+    data: itemsById,
+  } = useGetItemsListByIDQuery(
     { sub_service_id: subServiceID },
     { skip: !subServiceID }
   );
+  console.log("RAW itemsById:", itemsById);
+const itemUnitOptions =
+    unitOptionsBySubServiceName[selectedSubService?.label as string] || [];
+    console.log("selectedSubService", selectedSubService);
+console.log("itemUnitOptions", itemUnitOptions);
+console.log("subServiceID:", subServiceID);
+
+
 
   const { data: locationListData } = useGetLocationListQuery({});
   const { data: buildingList } = useGetBuildingListQuery({});
@@ -74,15 +121,18 @@ const FinalItem = () => {
       }))
     : [];
 
-  const itemByIdList = Array.isArray(itemsById?.data?.data)
-    ? itemsById.data?.data.map((item: any) => {
-        return {
-          label: item.name || "Unknown",
-          value: item.id,
-          calculation_type: item.calculation_type,
-        };
-      })
-    : [];
+  const rawItemsArray = 
+   Array.isArray(itemsById?.data)
+     ? itemsById.data
+     : Array.isArray(itemsById?.data?.data)
+     ? itemsById.data.data
+     : [];
+
+ const itemByIdList = rawItemsArray.map((item: any) => ({
+   label: item.name || "Unknown",
+   value: item.id,
+   calculation_type: item.calculation_type,
+ }));
 
   const locationOptions = Array.isArray(locationListData?.data)
     ? locationListData?.data.map((item: any) => ({
@@ -117,7 +167,10 @@ const FinalItem = () => {
         service_id: form2Payload?.service?.value,
         sub_service_id: form2Payload?.sub_service?.value,
         item_id: form2Payload?.item?.value,
-        item_data: data,
+        item_data: {
+        ...data,
+        capacities: capacities, // add the array here
+        },
       },
     };
 
@@ -135,7 +188,7 @@ const FinalItem = () => {
   };
 
   const sections = [
-    "Types",
+    "Section",
     "Capacities",
     "Item Unit",
     "Measuring Unit",
@@ -185,7 +238,7 @@ const FinalItem = () => {
                   }
                   label="Sub Service"
                   rules={{ required: "This field is required" }}
-                  onInputChange={(event: any, value: any) => {
+                  onChange={(event: any, value: any) => {
                     setValue("sub_service", value);
                     setValue("item", null);
                     handleRenderCopm(null);
@@ -215,7 +268,7 @@ const FinalItem = () => {
             </Box>
             {item && (
               <Box className="flex gap-4 mb-4 flex-wrap">
-                {renderComp.location && (
+                {/* {renderComp.location && (
                   <FormControl className="w-1/4">
                     <RHFAutocomplete
                       name="location"
@@ -228,7 +281,7 @@ const FinalItem = () => {
                       rules={{ required: "This field is required" }}
                     />
                   </FormControl>
-                )}
+                )} */}
 
                 {renderComp.building && (
                   <FormControl className="w-1/4">
@@ -271,32 +324,112 @@ const FinalItem = () => {
               className="py-2"
               onSubmit={methods_2.handleSubmit(onSubmitForm2)}
             >
+               {/* 2) Hidden “capacities” registration */}
+  <input
+    type="hidden"
+    {...methods_2.register("capacities", {
+      validate: () =>
+        capacities.length > 0 || "Add at least one capacity before submitting",
+    })}
+  />
+  {methods_2.formState.errors.capacities && (
+    <p style={{ color: "red", fontSize: "0.875rem" }}>
+     {String(methods_2.formState.errors.capacities.message)}
+    </p>
+  )}
               <Box className="grid grid-cols-4 gap-4 mb-4">
                 <RHFTextField
-                  name="Types"
+                  name="Section"
                   type="number"
-                  label="Types"
+                  label="Section"
                   rules={{ required: "This field is required" }}
                 />
-                <RHFTextField
-                  name="Capacity"
-                  type="number"
-                  label="Capacity"
-                  rules={{ required: "This field is required" }}
-                />
-                <RHFTextField
-                  name="Item Unit"
-                  type="number"
-                  label="Item Unit"
-                  rules={{ required: "This field is required" }}
-                />
+                 {/* ↓↓↓ Capacity with add‐button starts here ↓↓↓ */}
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+      <RHFTextField
+        name="capacityInput"
+        type="number"
+        label="Capacity"
+        
+      />
+      {/* Add IconButton right next to the input */}
+      <IconButton
+        size="small"
+        color="primary"
+        onClick={() => {
+          const current = methods_2.getValues("capacityInput");
+          if (current !== undefined && current !== null && current !== "") {
+            setCapacities((prev) => [...prev, Number(current)]);
+            methods_2.setValue("capacityInput", ""); // clear the input
+          }
+        }}
+      >
+        <PlusIcon /> {/* or use any “+” icon you import */}
+      </IconButton>
+    </Box>
+    {/* Render all added capacities below the input */}
+    {capacities.length > 0 && (
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+        {capacities.map((c, idx) => (
+          <Box
+            key={idx}
+            sx={{
+              border: "1px solid rgba(0,0,0,0.2)",
+              borderRadius: 1,
+              px: 1,
+              py: 0.5,
+              fontSize: "0.875rem",
+              display: "flex",
+              alignItems: "center",
+              gap: 0.5,
+            }}
+          >
+            {c}
+            <IconButton
+              size="small"
+              onClick={() => {
+                setCapacities((prev) =>
+                  prev.filter((_v, i) => i !== idx)
+                );
+              }}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </Box>
+        ))}
+      </Box>
+    )}
+  </Box>
+  {/* ↑↑↑ Capacity with add‐button ends here ↑↑↑ */}
+
+               <RHFAutocomplete
+  name="Item Unit"
+  label="Item Unit"
+  options={itemUnitOptions}
+  getOptionLabel={(option) => option?.label || ""}
+  isOptionEqualToValue={(option: { value: any; }, value: { value: any; }) => option?.value === value?.value}
+  rules={{ required: "This field is required" }}
+/>
+
+
                 <RHFTextField
                   name="Measuring Unit"
                   type="number"
                   label="Measuring Unit"
                   rules={{ required: "This field is required" }}
                 />
+                
               </Box>
+              {/* 👇 New row for Description field */}
+<Box className="grid grid-cols-4 gap-4 mb-4">
+  <RHFTextField
+    name="Description"
+    type="text"
+    label="Description"
+    rules={{ required: "This field is required" }}
+  />
+</Box>
               <Box className="mb-4 my-4">
                 <Box className="flex justify-start py-4">
                   <Button
