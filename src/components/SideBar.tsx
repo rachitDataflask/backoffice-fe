@@ -66,6 +66,11 @@ const SideBar = () => {
         { name: "Products", icon: <InventoryIcon />, route: "/product" },
         { name: "Manufacturers", icon: <Factory />, route: "/manufacturer" },
         {
+          name: "Items",
+          icon: <InventoryIcon />,
+          route: "/Items",
+        },
+        {
           name: "Final Product Form",
           icon: <PrecisionManufacturingIcon />,
           route: "/final-product-form",
@@ -75,11 +80,7 @@ const SideBar = () => {
           icon: <DynamicFormIcon />,
           route: "/final-design-form",
         },
-        {
-          name: "Items",
-          icon: <InventoryIcon />,
-          route: "/Items",
-        },
+        
         {
           name: "Final Item Form",
           icon: <InventoryIcon />,
