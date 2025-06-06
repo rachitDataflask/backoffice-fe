@@ -98,6 +98,7 @@ const Products = () => {
             <TableHead>
               <TableRow>
                 <TableCell>Product Name</TableCell>
+                <TableCell> Capacity</TableCell>
                 <TableCell align="right">Actions</TableCell>
               </TableRow>
             </TableHead>
@@ -108,8 +109,13 @@ const Products = () => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row" className="capitalize">
-                    {`${item.name}  (${item.capacity})`}
+                    {`${item.name}`}
                   </TableCell>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    className="capitalize"
+                  >{`${item.capacity} ${item.unit}`}</TableCell>
                   <TableCell align="right">
                     <IconButton
                       aria-label="edit"

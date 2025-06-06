@@ -20,6 +20,7 @@ import ConfirmBox from "../../components/ConfirmBox";
 import {
   useDeleteSubBuildingMutation,
   useGetSubBuildingListQuery,
+  useGetBuildingListQuery,
 } from "../../redux/api/api";
 import { toast } from "react-toastify";
 import CustomSkeleton from "../../components/CustomSkeleton";
@@ -30,6 +31,8 @@ const SubBuildings = () => {
   const { data: subBuildingDataList, isFetching } = useGetSubBuildingListQuery(
     {}
   );
+  console.log("Sub Building Data List:", subBuildingDataList);
+
   const [subBuildingId, setSubBuildingId] = useState<string>("");
   const [updateSubBuildingId, setUpdateSubBuildingId] = useState<string>("");
   const [deleteSubBuilding] = useDeleteSubBuildingMutation();
