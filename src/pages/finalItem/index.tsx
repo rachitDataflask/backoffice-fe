@@ -156,6 +156,14 @@ const FinalItem = () => {
   };
 
   const onSubmitForm2 = async (data: any) => {
+    const { capacityInput, ...filteredData } = data;
+    const cleanedData = Object.fromEntries(
+      Object.entries(filteredData).map(([k, v]) => [
+        k,
+        v && typeof v === "object" && "value" in v ? v.value : v,
+      ])
+    );
+
     const payload = {
       url: "final-items",
       body: {
@@ -165,7 +173,7 @@ const FinalItem = () => {
         sub_service_id: form2Payload?.sub_service?.value,
         item_id: form2Payload?.item?.value,
         item_data: {
-          ...data,
+          ...cleanedData,
           capacities: capacities, // add the array here
         },
       },
@@ -354,10 +362,11 @@ const FinalItem = () => {
                         if (
                           current !== undefined &&
                           current !== null &&
-                          current !== ""
+                          current !== "" &&
+                          current !== 0
                         ) {
                           setCapacities((prev) => [...prev, Number(current)]);
-                          // methods_2.setValue("capacityInput", ""); // clear the input
+                          methods_2.setValue("capacityInput", ""); // clear the input
                         }
                       }}
                     >
