@@ -21,6 +21,8 @@ import { toast } from "react-toastify";
 import {
   useDeleteProductMutation,
   useGetProductListQuery,
+  useGetProductSubServiceListByIDQuery,
+  useGetSubServiceListByIDQuery,
 } from "../../redux/api/api";
 import AddProducts from "./AddProducts";
 
@@ -97,11 +99,14 @@ const Products = () => {
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>Product Name</TableCell>
-                <TableCell> Capacity</TableCell>
-                <TableCell align="right">Actions</TableCell>
+                <TableCell>Products</TableCell>
+                <TableCell>Capacity</TableCell>
+                <TableCell>Product Sub-Service</TableCell> {/* New */}
+                <TableCell>Service</TableCell> {/* New */}
+                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
+
             <TableBody>
               {productsDataList?.data?.map((item: any, index: any) => (
                 <TableRow
@@ -116,6 +121,12 @@ const Products = () => {
                     scope="row"
                     className="capitalize"
                   >{`${item.capacity} ${item.unit}`}</TableCell>
+                  <TableCell className="capitalize">
+                    {item.product_sub_service_id?.name || "N/A"}
+                  </TableCell>
+                  <TableCell className="capitalize">
+                    {item.product_sub_service_id?.service_id?.name || "N/A"}
+                  </TableCell>
                   <TableCell align="right">
                     <IconButton
                       aria-label="edit"

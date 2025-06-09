@@ -100,8 +100,10 @@ const Manufacturer = () => {
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>Manufacturer Name</TableCell>
-                <TableCell align="right">Actions</TableCell>
+                <TableCell>Manufacturers</TableCell>
+                <TableCell>Product Sub-Service</TableCell>
+                <TableCell>Service</TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -112,6 +114,12 @@ const Manufacturer = () => {
                 >
                   <TableCell component="th" scope="row" className="capitalize">
                     {item.name}
+                  </TableCell>
+                  <TableCell component="th" scope="row" className="capitalize">
+                    {item.product_sub_service_id.name}
+                  </TableCell>
+                  <TableCell component="th" scope="row" className="capitalize">
+                    {item.product_sub_service_id.service_id.name}
                   </TableCell>
                   <TableCell align="right">
                     <IconButton

@@ -99,8 +99,8 @@ const Buildings = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Buildings</TableCell>
-                  <TableCell>Descrition</TableCell>
-                  <TableCell align="right">Actions</TableCell>
+                  <TableCell>Description</TableCell>
+                  <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

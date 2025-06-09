@@ -9,6 +9,7 @@ import {
   useGetProductSubServiceListQuery,
   useGetProductListQuery,
   useGetManufacturerListQuery,
+  useGetManufacturerListByIdQuery,
   useGetProductSubServiceListByIDQuery,
   useGetProductListByIDQuery,
 } from "../../redux/api/api";
@@ -109,12 +110,12 @@ const FinalProduct = () => {
 
   // console.log("Products data:", products);
 
-  const selectedProduct = watch("product");
-  const productId = selectedProduct?.value;
+  // const selectedProduct = watch("product");
+  // const productId = selectedProduct?.value;
 
-  const { data: manufacturers } = useGetManufacturerListQuery(
-    { product_id: productId },
-    { skip: !productId }
+  const { data: manufacturers } = useGetManufacturerListByIdQuery(
+    { product_sub_service_id: productSubServiceId },
+    { skip: !productSubServiceId }
   );
 
   const [form2Payload, setForm2Payload] = useState<any>(null);
@@ -420,28 +421,28 @@ const FinalProduct = () => {
                   }
                   label="Manufacturer"
                   rules={{ required: "This field is required" }}
-                  disabled={!watch("product")}
+                  disabled={!watch("product_sub_service")}
+                />
+              </FormControl>
+              <FormControl className="w-1/4">
+                <RHFAutocomplete
+                  name="location"
+                  options={locationOptions}
+                  getOptionLabel={(option) =>
+                    option?.label
+                      ? option.label.replace(/\b\w/g, (char: any) =>
+                          char.toUpperCase()
+                        )
+                      : ""
+                  }
+                  isOptionEqualToValue={(option: any, value: any) =>
+                    option?.value === value?.value
+                  }
+                  label="Location"
+                  rules={{ required: "This field is required" }}
                 />
               </FormControl>
             </Box>
-            {manufacturers && (
-              <Box className="flex gap-4 mb-4 flex-wrap">
-                {renderComp.location && (
-                  <FormControl className="w-1/3">
-                    <RHFAutocomplete
-                      name="location"
-                      options={locationOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Location"
-                      rules={{ required: "This field is required" }}
-                    />
-                  </FormControl>
-                )}
-              </Box>
-            )}
 
             <Box className="flex justify-start py-4">
               <Button

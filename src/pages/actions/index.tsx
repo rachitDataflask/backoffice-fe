@@ -97,8 +97,10 @@ const Actions = () => {
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>Action Name</TableCell>
-                <TableCell align="right">Actions</TableCell>
+                <TableCell>Actions</TableCell>
+                <TableCell>Sub-Service</TableCell>
+                <TableCell>Service</TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -109,6 +111,12 @@ const Actions = () => {
                 >
                   <TableCell component="th" scope="row" className="capitalize">
                     {item.name}
+                  </TableCell>
+                  <TableCell component="th" scope="row" className="capitalize">
+                    {item.sub_service_id.name}
+                  </TableCell>
+                  <TableCell component="th" scope="row" className="capitalize">
+                    {item.sub_service_id.service_id.name}
                   </TableCell>
                   <TableCell align="right">
                     <IconButton

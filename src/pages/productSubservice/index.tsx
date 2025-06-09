@@ -102,8 +102,9 @@ const ProductSubService = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Product Sub-Services</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell align="right">Actions</TableCell>
+                  {/* <TableCell>Description</TableCell> */}
+                  <TableCell>Service</TableCell>
+                  <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -116,8 +117,11 @@ const ProductSubService = () => {
                       <TableCell component="th" scope="row">
                         {item.name}
                       </TableCell>
-                      <TableCell component="th" scope="row">
+                      {/* <TableCell component="th" scope="row">
                         {item.description}
+                      </TableCell> */}
+                      <TableCell component="th" scope="row">
+                        {item.service_id.name}
                       </TableCell>
                       <TableCell align="right">
                         <IconButton
