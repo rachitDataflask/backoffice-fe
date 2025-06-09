@@ -268,6 +268,13 @@ export const api = createApi({
       }),
       providesTags: ["Manufacturer"],
     }),
+    getManufacturerListById: builder.query<any, any>({
+      query: (data: any) => ({
+        url: `${apiRoot}manufacturer?product_sub_service_id=${data.product_sub_service_id}`,
+        method: "GET",
+      }),
+      providesTags: ["Manufacturer"],
+    }),
 
     addManufacturer: builder.mutation<any, any>({
       query: (data: any) => ({
@@ -585,6 +592,7 @@ export const {
   useUpdateProductSubServiceMutation,
   useDeleteProductSubServiceMutation,
   useGetManufacturerListQuery,
+  useGetManufacturerListByIdQuery,
   useAddManufacturerMutation,
   useUpdateManufacturerMutation,
   useDeleteManufacturerMutation,

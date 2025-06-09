@@ -103,8 +103,9 @@ const SubBuildings = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Sub-Buildings</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell align="right">Actions</TableCell>
+                  <TableCell> Building</TableCell>
+                  {/* <TableCell>Description</TableCell> */}
+                  <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -117,8 +118,11 @@ const SubBuildings = () => {
                       {item.type}
                     </TableCell>
                     <TableCell component="th" scope="row">
-                      {item.description}
+                      {item.building_id?.type}
                     </TableCell>
+                    {/* <TableCell component="th" scope="row">
+                      {item.description}
+                    </TableCell> */}
                     <TableCell align="right">
                       <IconButton
                         aria-label="edit"

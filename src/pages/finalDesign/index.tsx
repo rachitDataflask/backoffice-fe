@@ -296,6 +296,7 @@ const FinalDesign = () => {
                     setValue("building", null);
                     setSelectedBuilding(null);
                   }}
+                  disabled={!watch("service")}
                 />
               </FormControl>
 
@@ -314,123 +315,54 @@ const FinalDesign = () => {
                     setValue("action", value);
                     setValue("location", null);
                   }}
+                  disabled={!watch("sub_service")}
                 />
               </FormControl>
             </Box>
 
-            {action && (
-              <Box className="flex gap-4 mb-4 flex-wrap">
-                {renderComp.loaction && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="location"
-                      options={locationOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Location"
-                      rules={{ required: "This field is required" }}
-                    />
-                  </FormControl>
-                )}
-
-                {renderComp.building && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="building"
-                      value={selectedBuilding || null}
-                      options={buildingOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Building"
-                      rules={{ required: "This field is required" }}
-                      onChange={(event: any, value: any) => {
-                        setSelectedBuilding(value || null);
-                        setSelectedSubBuilding(null);
-                        setSelectedLevel(null);
-                        setSelectedRoom(null);
-                        if (value?.value) {
-                          fetchSubBuildings({ building_id: value.value });
-                        }
-                        setValue("building", value);
-                      }}
-                    />
-                  </FormControl>
-                )}
-
-                {renderComp.sub_building && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="sub_building"
-                      value={selectedSubBuilding || null}
-                      options={subBuildingOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Sub Building"
-                      rules={{ required: "This field is required" }}
-                      onChange={(event: any, value: any) => {
-                        setSelectedSubBuilding(value || null);
-                        setSelectedLevel(null);
-                        setSelectedRoom(null);
-                        // if (value?.value) {
-                        //   fetchLevels({ sub_building_id: value.value });
-                        // }
-                        setValue("sub_building", value);
-                      }}
-                    />
-                  </FormControl>
-                )}
-
-                {/* {renderComp.level && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="levels"
-                      value={selectedLevel || null}
-                      options={levelsOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Levels"
-                      rules={{ required: "This field is required" }}
-                      onChange={(event: any, value: any) => {
-                        setSelectedLevel(value || null);
-                        setSelectedRoom(null);
-                        if (value?.value) {
-                          fetchRooms({ level_id: value.value });
-                        }
-                        setValue("levels", value);
-                      }}
-                    />
-                  </FormControl>
-                )} */}
-
-                {/* {renderComp.room && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="rooms"
-                      value={selectedRoom || null}
-                      options={roomOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Rooms"
-                      rules={{ required: "This field is required" }}
-                      onChange={(event: any, value: any) => {
-                        setSelectedRoom(value || null);
-                        setValue("rooms", value);
-                      }}
-                    />
-                  </FormControl>
-                )} */}
-              </Box>
-            )}
+            <Box className="flex gap-4 mb-4 flex-wrap">
+              <FormControl className="w-1/4">
+                <RHFAutocomplete
+                  name="location"
+                  options={locationOptions}
+                  getOptionLabel={(option) =>
+                    option?.label
+                      ? option.label.replace(/\b\w/g, (char: any) =>
+                          char.toUpperCase()
+                        )
+                      : ""
+                  }
+                  isOptionEqualToValue={(option: any, value: any) =>
+                    option?.value === value?.value
+                  }
+                  label="Location"
+                  rules={{ required: "This field is required" }}
+                />
+              </FormControl>
+              <FormControl className="w-1/4">
+                <RHFAutocomplete
+                  name="building"
+                  value={selectedBuilding || null}
+                  options={buildingOptions}
+                  getOptionLabel={(option) => option?.label || ""}
+                  isOptionEqualToValue={(option: any, value: any) =>
+                    option?.value === value?.value
+                  }
+                  label="Building"
+                  rules={{ required: "This field is required" }}
+                  onChange={(event: any, value: any) => {
+                    setSelectedBuilding(value || null);
+                    setSelectedSubBuilding(null);
+                    setSelectedLevel(null);
+                    setSelectedRoom(null);
+                    if (value?.value) {
+                      fetchSubBuildings({ building_id: value.value });
+                    }
+                    setValue("building", value);
+                  }}
+                />
+              </FormControl>
+            </Box>
 
             <Box className="flex justify-start py-4">
               <Button

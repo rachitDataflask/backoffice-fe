@@ -33,10 +33,11 @@ const Rooms = () => {
   const [deleteRooms] = useDeleteRoomsMutation();
 
   const toTitleCase = (text: string): string =>
-  text.replace(/\w\S*/g, (word: string) =>
-    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-  );
-
+    text.replace(
+      /\w\S*/g,
+      (word: string) =>
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    );
 
   const handleRouteAddRoom = () => {
     setOpen(true);
@@ -104,8 +105,11 @@ const Rooms = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Rooms</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell align="right">Actions</TableCell>
+                  {/* <TableCell>Description</TableCell> */}
+                  <TableCell>Levels</TableCell>
+                  <TableCell>Sub-Building</TableCell>
+                  <TableCell>Building</TableCell>
+                  <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -114,12 +118,23 @@ const Rooms = () => {
                     key={index}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                   <TableCell component="th" scope="row">
-  {toTitleCase(item.name)}
-</TableCell>
-<TableCell component="th" scope="row">
-  {toTitleCase(item.description)}
-</TableCell>
+                    <TableCell component="th" scope="row">
+                      {toTitleCase(item.name)}
+                    </TableCell>
+                    {/* <TableCell component="th" scope="row">
+                      {toTitleCase(item.description)}
+                    </TableCell> */}
+                    <TableCell component="th" scope="row">
+                      {toTitleCase(item.level_id.name)}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {toTitleCase(item.level_id.sub_building_id.type)}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {toTitleCase(
+                        item.level_id.sub_building_id.building_id.type
+                      )}
+                    </TableCell>
 
                     <TableCell align="right">
                       <IconButton

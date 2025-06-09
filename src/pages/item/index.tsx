@@ -97,9 +97,11 @@ const Items = () => {
           <Table size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>Item Name</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell align="right">Actions</TableCell>
+                <TableCell>Items</TableCell>
+                {/* <TableCell>Description</TableCell> */}
+                <TableCell>Sub-Service</TableCell>
+                <TableCell>Service</TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -111,8 +113,14 @@ const Items = () => {
                   <TableCell component="th" scope="row" className="capitalize">
                     {`${item.name}`}
                   </TableCell>
-                  <TableCell component="th" scope="row">
+                  {/* <TableCell component="th" scope="row">
                     {item.description}
+                  </TableCell> */}
+                  <TableCell component="th" scope="row">
+                    {item.sub_service_id.name}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {item.sub_service_id.service_id.name}
                   </TableCell>
                   <TableCell align="right">
                     <IconButton

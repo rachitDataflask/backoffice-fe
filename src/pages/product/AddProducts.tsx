@@ -19,7 +19,7 @@ interface FormValues {
   product_sub_service_id: any;
   product_sub_service: any;
   service: any;
-  unit: any; 
+  unit: any;
 }
 
 const AddProducts = (props: any) => {
@@ -43,7 +43,7 @@ const AddProducts = (props: any) => {
   const newSelectedService = selectedService?.value;
   const selectedProductSubService = watch("product_sub_service");
   const newSelectedProductSubService = selectedProductSubService?.value;
-  const selectedUnit = watch("unit"); 
+  const selectedUnit = watch("unit");
 
   const { data: productSubServiceListByID } =
     useGetProductSubServiceListByIDQuery(
@@ -61,7 +61,7 @@ const AddProducts = (props: any) => {
       body: {
         name: data.name,
         capacity: data.capacity,
-        unit: selectedUnit?.label, 
+        unit: selectedUnit?.label,
         product_sub_service_id: newSelectedProductSubService,
       },
     };
@@ -128,7 +128,7 @@ const AddProducts = (props: any) => {
       setValue("unit", {
         label: productsData.unit,
         value: productsData.unit?.toLowerCase(),
-      }); 
+      });
     } else {
       reset();
     }
@@ -189,14 +189,13 @@ const AddProducts = (props: any) => {
 
             <Box className="flex gap-4 items-center">
               <RHFTextField
+                className="w-1/2"
                 name="capacity"
                 label="Capacity"
                 rules={{ required: "This field is required" }}
               />
-            </Box>
-
-            <Box className="flex gap-4 items-center">
               <RHFAutocomplete
+                className="w-1/2"
                 name="unit"
                 options={unitOptions}
                 getOptionLabel={(option) => option?.label || ""}

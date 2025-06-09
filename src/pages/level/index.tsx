@@ -98,8 +98,10 @@ const Levels = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Levels</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell align="right">Actions</TableCell>
+                  {/* <TableCell>Description</TableCell> */}
+                  <TableCell>Sub-Building</TableCell>
+                  <TableCell> Building</TableCell>
+                  <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -111,8 +113,14 @@ const Levels = () => {
                     <TableCell component="th" scope="row">
                       {item.name}
                     </TableCell>
-                    <TableCell component="th" scope="row">
+                    {/* <TableCell component="th" scope="row">
                       {item.description}
+                    </TableCell> */}
+                    <TableCell component="th" scope="row">
+                      {item.sub_building_id.type}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {item.sub_building_id.building_id.type}
                     </TableCell>
                     <TableCell align="right">
                       <IconButton

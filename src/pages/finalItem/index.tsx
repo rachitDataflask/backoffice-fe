@@ -4,7 +4,7 @@ import RHFAutocomplete from "../../components/RHF/RHFAutocomplete";
 import { useState } from "react";
 import RHFTextField from "../../components/RHF/RHFTextField";
 import IconButton from "@mui/material/IconButton";
-import PlusIcon from "@mui/icons-material/Add"; 
+import PlusIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 
 import {
@@ -20,37 +20,39 @@ import {
 import { toast } from "react-toastify";
 
 const FinalItem = () => {
-const unitOptionsBySubServiceName: Record<string, { label: string; value: string }[]> = {
-  // ─── Electrical ───
-  "Lighting":           [{ label: "Watt", value: "Watt" }],
-  "Power":       [{ label: "Amp",  value: "Amp"  }],
-  "Containment":        [{ label: "Core",   value: "Core"   }],
-  "Equipment":        [{ label: "KW",   value: "KW"   }],
+  const unitOptionsBySubServiceName: Record<
+    string,
+    { label: string; value: string }[]
+  > = {
+    // ─── Electrical ───
+    Lighting: [{ label: "Watt", value: "Watt" }],
+    Power: [{ label: "Amp", value: "Amp" }],
+    Containment: [{ label: "Core", value: "Core" }],
+    Equipment: [{ label: "KW", value: "KW" }],
 
-  // ─── HVAC ───
-  "Chilled Water System": [{ label: "TR", value: "TR" }],
-  "VRF / VRV":           [
-                           { label: "TR", value: "TR" },
-                           { label: "HP", value: "HP" },
-                         ],
-  "Direct Expansion":     [{ label: "TR", value: "TR" }],
-  "Ventilation":   [{ label: "CFM", value: "CFM" }],
+    // ─── HVAC ───
+    "Chilled Water System": [{ label: "TR", value: "TR" }],
+    "VRF / VRV": [
+      { label: "TR", value: "TR" },
+      { label: "HP", value: "HP" },
+    ],
+    "Direct Expansion": [{ label: "TR", value: "TR" }],
+    Ventilation: [{ label: "CFM", value: "CFM" }],
 
-  // ─── Fire Fighting ───
-  "Hydrant System":       [{ label: "mm", value: "mm" }],
-  "Sprinkler System":     [{ label: "mm", value: "mm" }],
-  "Fire Extinguisher":    [{ label: "Kg", value: "Kg" }],
+    // ─── Fire Fighting ───
+    "Hydrant System": [{ label: "mm", value: "mm" }],
+    "Sprinkler System": [{ label: "mm", value: "mm" }],
+    "Fire Extinguisher": [{ label: "Kg", value: "Kg" }],
 
-  // ─── Plumbing ───
-  "Water Supply":         [{ label: "Lpm", value: "Lpm" }],
-  "Drainage":      [{ label: "Lpm", value: "Lpm" }],
-  "Pump Room Access":     [{ label: "Lpm", value: "Lpm" }],
-  "Piping System":        [{ label: "Lpm", value: "Lpm" }],
-};
-// ↑↑↑ end REPLACEMENT ↑↑↑
+    // ─── Plumbing ───
+    "Water Supply": [{ label: "Lpm", value: "Lpm" }],
+    Drainage: [{ label: "Lpm", value: "Lpm" }],
+    "Pump Room Access": [{ label: "Lpm", value: "Lpm" }],
+    "Piping System": [{ label: "Lpm", value: "Lpm" }],
+  };
+  // ↑↑↑ end REPLACEMENT ↑↑↑
 
-
-    // new state to hold all added capacities
+  // new state to hold all added capacities
   const [capacities, setCapacities] = useState<number[]>([]);
 
   const methods = useForm();
@@ -69,22 +71,18 @@ const unitOptionsBySubServiceName: Record<string, { label: string; value: string
   );
 
   const selectedSubService = watch("sub_service");
-  
+
   const subServiceID = selectedSubService?.value;
-   const {
-    data: itemsById,
-  } = useGetItemsListByIDQuery(
+  const { data: itemsById } = useGetItemsListByIDQuery(
     { sub_service_id: subServiceID },
     { skip: !subServiceID }
   );
   console.log("RAW itemsById:", itemsById);
-const itemUnitOptions =
+  const itemUnitOptions =
     unitOptionsBySubServiceName[selectedSubService?.label as string] || [];
-    console.log("selectedSubService", selectedSubService);
-console.log("itemUnitOptions", itemUnitOptions);
-console.log("subServiceID:", subServiceID);
-
-
+  console.log("selectedSubService", selectedSubService);
+  console.log("itemUnitOptions", itemUnitOptions);
+  console.log("subServiceID:", subServiceID);
 
   const { data: locationListData } = useGetLocationListQuery({});
   const { data: buildingList } = useGetBuildingListQuery({});
@@ -121,18 +119,17 @@ console.log("subServiceID:", subServiceID);
       }))
     : [];
 
-  const rawItemsArray = 
-   Array.isArray(itemsById?.data)
-     ? itemsById.data
-     : Array.isArray(itemsById?.data?.data)
-     ? itemsById.data.data
-     : [];
+  const rawItemsArray = Array.isArray(itemsById?.data)
+    ? itemsById.data
+    : Array.isArray(itemsById?.data?.data)
+    ? itemsById.data.data
+    : [];
 
- const itemByIdList = rawItemsArray.map((item: any) => ({
-   label: item.name || "Unknown",
-   value: item.id,
-   calculation_type: item.calculation_type,
- }));
+  const itemByIdList = rawItemsArray.map((item: any) => ({
+    label: item.name || "Unknown",
+    value: item.id,
+    calculation_type: item.calculation_type,
+  }));
 
   const locationOptions = Array.isArray(locationListData?.data)
     ? locationListData?.data.map((item: any) => ({
@@ -168,8 +165,8 @@ console.log("subServiceID:", subServiceID);
         sub_service_id: form2Payload?.sub_service?.value,
         item_id: form2Payload?.item?.value,
         item_data: {
-        ...data,
-        capacities: capacities, // add the array here
+          ...data,
+          capacities: capacities, // add the array here
         },
       },
     };
@@ -245,6 +242,7 @@ console.log("subServiceID:", subServiceID);
                     setValue("building", null);
                     setSelectedBuilding(null);
                   }}
+                  disabled={!watch("service")}
                 />
               </FormControl>
 
@@ -263,47 +261,33 @@ console.log("subServiceID:", subServiceID);
                     setValue("item", value);
                     setValue("location", null);
                   }}
+                  disabled={!watch("sub_service")}
                 />
               </FormControl>
             </Box>
-            {item && (
-              <Box className="flex gap-4 mb-4 flex-wrap">
-                {/* {renderComp.location && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="location"
-                      options={locationOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Location"
-                      rules={{ required: "This field is required" }}
-                    />
-                  </FormControl>
-                )} */}
-
-                {renderComp.building && (
-                  <FormControl className="w-1/4">
-                    <RHFAutocomplete
-                      name="building"
-                      value={selectedBuilding || null}
-                      options={buildingOptions}
-                      getOptionLabel={(option) => option?.label || ""}
-                      isOptionEqualToValue={(option: any, value: any) =>
-                        option?.value === value?.value
-                      }
-                      label="Building"
-                      rules={{ required: "This field is required" }}
-                      onChange={(event: any, value: any) => {
-                        setSelectedBuilding(value || null);
-                        if (value?.value) setValue("building", value);
-                      }}
-                    />
-                  </FormControl>
-                )}
-              </Box>
-            )}
+            {/* {item && ( */}
+            <Box className="flex gap-4 mb-4 flex-wrap">
+              {renderComp.building && (
+                <FormControl className="w-1/4">
+                  <RHFAutocomplete
+                    name="building"
+                    value={selectedBuilding || null}
+                    options={buildingOptions}
+                    getOptionLabel={(option) => option?.label || ""}
+                    isOptionEqualToValue={(option: any, value: any) =>
+                      option?.value === value?.value
+                    }
+                    label="Building"
+                    rules={{ required: "This field is required" }}
+                    onChange={(event: any, value: any) => {
+                      setSelectedBuilding(value || null);
+                      if (value?.value) setValue("building", value);
+                    }}
+                  />
+                </FormControl>
+              )}
+            </Box>
+            {/* )} */}
             <Box className="flex justify-start py-4">
               <Button
                 type="submit"
@@ -324,19 +308,20 @@ console.log("subServiceID:", subServiceID);
               className="py-2"
               onSubmit={methods_2.handleSubmit(onSubmitForm2)}
             >
-               {/* 2) Hidden “capacities” registration */}
-  <input
-    type="hidden"
-    {...methods_2.register("capacities", {
-      validate: () =>
-        capacities.length > 0 || "Add at least one capacity before submitting",
-    })}
-  />
-  {methods_2.formState.errors.capacities && (
-    <p style={{ color: "red", fontSize: "0.875rem" }}>
-     {String(methods_2.formState.errors.capacities.message)}
-    </p>
-  )}
+              {/* 2) Hidden “capacities” registration */}
+              <input
+                type="hidden"
+                {...methods_2.register("capacities", {
+                  validate: () =>
+                    capacities.length > 0 ||
+                    "Add at least one capacity before submitting",
+                })}
+              />
+              {methods_2.formState.errors.capacities && (
+                <p style={{ color: "red", fontSize: "0.875rem" }}>
+                  {String(methods_2.formState.errors.capacities.message)}
+                </p>
+              )}
               <Box className="grid grid-cols-4 gap-4 mb-4">
                 <RHFTextField
                   name="Section"
@@ -344,92 +329,100 @@ console.log("subServiceID:", subServiceID);
                   label="Section"
                   rules={{ required: "This field is required" }}
                 />
-                 {/* ↓↓↓ Capacity with add‐button starts here ↓↓↓ */}
-  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-      <RHFTextField
-        name="capacityInput"
-        type="number"
-        label="Capacity"
-        
-      />
-      {/* Add IconButton right next to the input */}
-      <IconButton
-        size="small"
-        color="primary"
-        onClick={() => {
-          const current = methods_2.getValues("capacityInput");
-          if (current !== undefined && current !== null && current !== "") {
-            setCapacities((prev) => [...prev, Number(current)]);
-            methods_2.setValue("capacityInput", ""); // clear the input
-          }
-        }}
-      >
-        <PlusIcon /> {/* or use any “+” icon you import */}
-      </IconButton>
-    </Box>
-    {/* Render all added capacities below the input */}
-    {capacities.length > 0 && (
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-        {capacities.map((c, idx) => (
-          <Box
-            key={idx}
-            sx={{
-              border: "1px solid rgba(0,0,0,0.2)",
-              borderRadius: 1,
-              px: 1,
-              py: 0.5,
-              fontSize: "0.875rem",
-              display: "flex",
-              alignItems: "center",
-              gap: 0.5,
-            }}
-          >
-            {c}
-            <IconButton
-              size="small"
-              onClick={() => {
-                setCapacities((prev) =>
-                  prev.filter((_v, i) => i !== idx)
-                );
-              }}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </Box>
-        ))}
-      </Box>
-    )}
-  </Box>
-  {/* ↑↑↑ Capacity with add‐button ends here ↑↑↑ */}
-
-               <RHFAutocomplete
-  name="Item Unit"
-  label="Item Unit"
-  options={itemUnitOptions}
-  getOptionLabel={(option) => option?.label || ""}
-  isOptionEqualToValue={(option: { value: any; }, value: { value: any; }) => option?.value === value?.value}
-  rules={{ required: "This field is required" }}
-/>
-
-
                 <RHFTextField
-                  name="Measuring Unit"
+                  name="Item Unit"
                   type="number"
-                  label="Measuring Unit"
+                  label="Item Unit"
                   rules={{ required: "This field is required" }}
                 />
-                
+              </Box>
+              <Box className="grid grid-cols-4 gap-4 mb-4">
+                {/* ↓↓↓ Capacity with add‐button starts here ↓↓↓ */}
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <RHFTextField
+                      name="capacityInput"
+                      type="number"
+                      label="Capacity"
+                    />
+                    {/* Add IconButton right next to the input */}
+                    <IconButton
+                      size="small"
+                      color="primary"
+                      onClick={() => {
+                        const current = methods_2.getValues("capacityInput");
+                        if (
+                          current !== undefined &&
+                          current !== null &&
+                          current !== ""
+                        ) {
+                          setCapacities((prev) => [...prev, Number(current)]);
+                          // methods_2.setValue("capacityInput", ""); // clear the input
+                        }
+                      }}
+                    >
+                      <PlusIcon /> {/* or use any “+” icon you import */}
+                    </IconButton>
+                  </Box>
+                  {/* Render all added capacities below the input */}
+                  {capacities.length > 0 && (
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                      {capacities.map((c, idx) => (
+                        <Box
+                          key={idx}
+                          sx={{
+                            border: "1px solid rgba(0,0,0,0.2)",
+                            borderRadius: 1,
+                            px: 1,
+                            py: 0.5,
+                            fontSize: "0.875rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 0.5,
+                          }}
+                        >
+                          {c}
+                          <IconButton
+                            size="small"
+                            onClick={() => {
+                              setCapacities((prev) =>
+                                prev.filter((_v, i) => i !== idx)
+                              );
+                            }}
+                          >
+                            <CloseIcon fontSize="small" />
+                          </IconButton>
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
+                </Box>
+                {/* ↑↑↑ Capacity with add‐button ends here ↑↑↑ */}
+
+                <RHFAutocomplete
+                  name="Measuring Unit"
+                  label="Measuring Unit"
+                  options={itemUnitOptions}
+                  getOptionLabel={(option) => option?.label || ""}
+                  // isOptionEqualToValue={(
+                  //   option: { value: any },
+                  //   value: { value: any }
+                  // ) => option?.value === value?.value}
+                  rules={{ required: "This field is required" }}
+                />
               </Box>
               {/* 👇 New row for Description field */}
-<Box className="grid grid-cols-4 gap-4 mb-4">
-  <RHFTextField
-    name="Description"
-    type="text"
-    label="Description"
-    rules={{ required: "This field is required" }}
-  />
-</Box>
+              <Box className="grid grid-cols-3 gap-4 mb-4">
+                <RHFTextField
+                  className="w-1/2"
+                  name="Description"
+                  type="text"
+                  label="Description"
+                  multiline
+                  rows={8}
+                  rules={{ required: "This field is required" }}
+                />
+              </Box>
               <Box className="mb-4 my-4">
                 <Box className="flex justify-start py-4">
                   <Button

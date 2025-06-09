@@ -128,7 +128,7 @@ const AddProductSubService = (props: any) => {
             {/* Sub-Building Type Field */}
             <RHFTextField
               name="name"
-              label="Sub-Service"
+              label="Product Sub-Service"
               rules={{
                 required: "This field is required",
               }}
