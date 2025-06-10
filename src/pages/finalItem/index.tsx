@@ -200,6 +200,8 @@ const FinalItem = () => {
     "Description",
   ];
 
+  const measuringUnitOptions = [{ label: "Nos.", value: "nos" }];
+
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   // };
@@ -333,14 +335,19 @@ const FinalItem = () => {
               <Box className="grid grid-cols-4 gap-4 mb-4">
                 <RHFTextField
                   name="Section"
-                  type="number"
+                  type="text"
                   label="Section"
                   rules={{ required: "This field is required" }}
                 />
-                <RHFTextField
+                <RHFAutocomplete
                   name="Item Unit"
-                  type="number"
                   label="Item Unit"
+                  options={measuringUnitOptions}
+                  getOptionLabel={(option) => option?.label || ""}
+                  // isOptionEqualToValue={(
+                  //   option: { value: any },
+                  //   value: { value: any }
+                  // ) => option?.value === value?.value}
                   rules={{ required: "This field is required" }}
                 />
               </Box>
