@@ -1,7 +1,7 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const SeepagePumpSizingUnderground = () => {
+const SeepagePumpSizingHotel = () => {
   const panelDetails = ["Seepage Sump sizing calculations"];
 
   const fieldDetails = [
@@ -16,9 +16,7 @@ const SeepagePumpSizingUnderground = () => {
 
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">
-        SEEPAGE PUMP SIZING - UNDERGROUND
-      </h2>
+      <h2 className="text-xl font-bold mb-4">SEEPAGE PUMP SIZING - HOTEL</h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
@@ -42,4 +40,4 @@ const SeepagePumpSizingUnderground = () => {
   );
 };
 
-export default SeepagePumpSizingUnderground;
+export default SeepagePumpSizingHotel;

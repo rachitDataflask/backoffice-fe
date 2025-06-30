@@ -1,23 +1,34 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const SeepagePumpSizingUnderground = () => {
-  const panelDetails = ["Seepage Sump sizing calculations"];
+const PlumbingRainWaterPipeDropHotel = () => {
+  const panelDetails = [
+    "ADMIN BUILDING",
+    "WORKSHOP",
+    "PUMP ROOM",
+    "ASS ROOM",
+    "AUTO WASH PLANT",
+    "COMPRESSOR ROOM",
+    "ETU",
+    "PIT WHEEL LATHE",
+    "STORE",
+    "TIME OFFICE",
+    "STABLING YARD",
+    "WELDING PLANT",
+    "WHOLE SITE",
+  ];
 
   const fieldDetails = [
-    { name: "retaining_wall_area", label: "Retaining Wall Area" },
-    {
-      name: "seepage_generation_rate_peak_season",
-      label: "Seepage Generation Rate at Peak Season",
-    },
-    { name: "station_cleaning_area", label: "Station Cleaning Area" },
-    { name: "number_of_hydrants", label: "Number of Hydrants" },
+    { name: "catchment_area", label: "Catchment Area" },
+    { name: "pipe_size", label: "Pipe Size" },
+    { name: "rainfall_intensity", label: "Rain Fall Intensity" },
+    { name: "number_of_droppings", label: "Number of Droppings" },
   ];
 
   return (
     <>
       <h2 className="text-xl font-bold mb-4">
-        SEEPAGE PUMP SIZING - UNDERGROUND
+        RAIN WATER PIPE DROPPING - HOTEL
       </h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
@@ -42,4 +53,4 @@ const SeepagePumpSizingUnderground = () => {
   );
 };
 
-export default SeepagePumpSizingUnderground;
+export default PlumbingRainWaterPipeDropHotel;

@@ -28,7 +28,9 @@ const FireHeadlossUnderground = () => {
   ];
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">PLUMBING HEADLOSS (DEPOT)</h2>
+      <h2 className="text-xl font-bold mb-4">
+        PLUMBING HEADLOSS (UNDERGROUND)
+      </h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>

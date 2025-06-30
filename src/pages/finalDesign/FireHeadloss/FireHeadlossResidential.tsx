@@ -1,7 +1,7 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const FireHeadlossElevated = () => {
+const FireHeadlossResidential = () => {
   const panelDetails = [
     "80 MM DIA MS PIPE",
     "100 MM DIA MS PIPE",
@@ -28,7 +28,9 @@ const FireHeadlossElevated = () => {
   ];
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">PLUMBING HEADLOSS (ELEVATED)</h2>
+      <h2 className="text-xl font-bold mb-4">
+        PLUMBING HEADLOSS (RESIDENTIAL)
+      </h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
@@ -51,4 +53,4 @@ const FireHeadlossElevated = () => {
   );
 };
 
-export default FireHeadlossElevated;
+export default FireHeadlossResidential;

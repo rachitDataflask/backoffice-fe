@@ -18,39 +18,108 @@ import { toast } from "react-toastify";
 import VentilationElevated from "./ventilation/VentilationElevated";
 import VentilationDepot from "./ventilation/VentilationDepot";
 import VentilationUnderground from "./ventilation/VentilationUnderground";
+import VentilationDataCenter from "./ventilation/VentilationDataCenter";
+import VentilationHotel from "./ventilation/VentilationHotel";
+import VentilationMall from "./ventilation/VentilationMall";
+import VentilationOffice from "./ventilation/VentilationOffice";
+import VentilationResidential from "./ventilation/VentilationResidential";
+import VentilationSchool from "./ventilation/VentilationSchool";
 import DailuxElevated from "./dailux/DailuxElevatedStation";
 import DailuxUnderground from "./dailux/DailuxUndergroundStation";
 import DailuxDepot from "./dailux/DailuxDepotStation";
 import CableElevated from "./cableSizing/CableElevated";
 import CableUnderground from "./cableSizing/CableUnderground";
 import CableDepot from "./cableSizing/CableDepot";
+import CableResidential from "./cableSizing/CableResidential";
+import CableOffice from "./cableSizing/CableOffice";
+import CableDataCenter from "./cableSizing/CableDataCenter";
+import CableHotel from "./cableSizing/CableHotel";
+import CableMall from "./cableSizing/CableMall";
+import CableSchool from "./cableSizing/CableSchool";
 import HeatLoadElevated from "./heatLoad/HeatLoadElevated";
 import HeatLoadUnderground from "./heatLoad/HeatLoadUnderground";
 import HeatLoadDepot from "./heatLoad/HeatLoadDepot";
 import ElectricalPanelElevated from "./equipmentLoad/ElectricalPanelElevated";
 import ElectricalPanelUnderground from "./equipmentLoad/ElectricalPanelUnderground";
 import ElectricalPanelDepot from "./equipmentLoad/ElectricalPanelDepot";
+import ElectricalPanelResidential from "./equipmentLoad/ElectricalPanelResidential";
+import ElectricalPanelOffice from "./equipmentLoad/ElectricalPanelOffice";
+import ElectricalPanelDataCenter from "./equipmentLoad/ElectricalPanelDataCenter";
+import ElectricalPanelHotel from "./equipmentLoad/ElectricalPanelHotel";
+import ElectricalPanelMall from "./equipmentLoad/ElectricalPanelMall";
+import ElectricalPanelSchool from "./equipmentLoad/ElectricalPanelSchool";
 import PlumbingWaterDemandDepot from "./plumbingWaterDemand/PlumbingWaterDemandDepot";
 import PlumbingWaterDemandElevated from "./plumbingWaterDemand/PlumbingWaterDemandElevated";
 import PlumbingWaterDemandUnderground from "./plumbingWaterDemand/PlumbingWaterDemandUnderground";
+import PlumbingWaterDemandResidential from "./plumbingWaterDemand/PlumbingWaterDemandResidential";
+import PlumbingWaterDemandOffice from "./plumbingWaterDemand/PlumbingWaterDemandOffice";
+import PlumbingWaterDemandDataCenter from "./plumbingWaterDemand/PlumbingWaterDemandDataCenter";
+import PlumbingWaterDemandHotel from "./plumbingWaterDemand/PlumbingWaterDemandHotel";
+import PlumbingWaterDemandMall from "./plumbingWaterDemand/PlumbingWaterDemandMall";
+import PlumbingWaterDemandSchool from "./plumbingWaterDemand/PlumbingWaterDemandSchool";
 import DrainageDepot from "./drainagePipeSizing/DrainageDepot";
 import DrainageElevated from "./drainagePipeSizing/DrainageElevated";
 import DrainageUnderground from "./drainagePipeSizing/DrainageUnderground";
+import DrainageResidential from "./drainagePipeSizing/DrainageResidential";
+import DrainageOffice from "./drainagePipeSizing/DrainageOffice";
+import DrainageDataCenter from "./drainagePipeSizing/DrainageDataCenter";
+import DrainageHotel from "./drainagePipeSizing/DrainageHotel";
+import DrainageMall from "./drainagePipeSizing/DrainageMall";
+import DrainageSchool from "./drainagePipeSizing/DrainageSchool";
 import PlumbingHeadlossElevated from "./plumbingHeadLoss/PlumbingHeadlossElevated";
 import PlumbingHeadlossUnderground from "./plumbingHeadLoss/PlumbingHeadlossUnderground";
 import PlumbingHeadlossDepot from "./plumbingHeadLoss/PlumbingHeadlossDepot";
+import PlumbingHeadlossResidential from "./plumbingHeadLoss/PlumbingHeadLossResidential";
+import PlumbingHeadlossOffice from "./plumbingHeadLoss/PlumbingHeadLossOffice";
+import PlumbingHeadlossDataCenter from "./plumbingHeadLoss/PlumbingHeadLossDataCenter";
+import PlumbingHeadlossHotel from "./plumbingHeadLoss/PlumbingHeadLossHotel";
+import PlumbingHeadlossMall from "./plumbingHeadLoss/PlumbingHeadLossMall";
+import PlumbingHeadlossSchool from "./plumbingHeadLoss/PlumbingHeadLossSchool";
 import PlumbingWaterSupplyPipeSizingDepot from "./pumbingWaterSupplyPipeSizing/PlumbingWaterSupplyPipeSizingDepot";
 import PlumbingWaterSupplyPipeSizingElevated from "./pumbingWaterSupplyPipeSizing/PlumbingWaterSupplyPipeSizingElevated";
 import PlumbingWaterSupplyPipeSizingUnderground from "./pumbingWaterSupplyPipeSizing/PlumbingWaterSupplyPipeSizingUnderground";
+import PlumbingWaterSupplyPipeSizingResidential from "./pumbingWaterSupplyPipeSizing/PumbingWaterSupplyPipeSizingResidential";
+import PlumbingWaterSupplyPipeSizingOffice from "./pumbingWaterSupplyPipeSizing/PumbingWaterSupplyPipeSizingOffice";
+import PlumbingWaterSupplyPipeSizingDataCenter from "./pumbingWaterSupplyPipeSizing/PumbingWaterSupplyPipeSizingDataCenter";
+import PlumbingWaterSupplyPipeSizingHotel from "./pumbingWaterSupplyPipeSizing/PumbingWaterSupplyPipeSizingHotel";
+import PlumbingWaterSupplyPipeSizingMall from "./pumbingWaterSupplyPipeSizing/PumbingWaterSupplyPipeSizingMall";
+import PlumbingWaterSupplyPipeSizingSchool from "./pumbingWaterSupplyPipeSizing/PumbingWaterSupplyPipeSizingSchool";
 import FireHeadlossElevated from "./FireHeadloss/FireHeadlossElevated";
 import FireHeadlossUnderground from "./FireHeadloss/FireHeadlossUnderground";
+import FireHeadlossDepot from "./FireHeadloss/FireHeadlossDepot";
+import FireHeadlossResidential from "./FireHeadloss/FireHeadlossResidential";
+import FireHeadlossOffice from "./FireHeadloss/FireHeadlossOffice";
+import FireHeadlossDataCenter from "./FireHeadloss/FireHeadlossDataCenter";
+import FireHeadlossHotel from "./FireHeadloss/FireHeadlossHotel";
+import FireHeadlossMall from "./FireHeadloss/FireHeadlossMall";
+import FireHeadlossSchool from "./FireHeadloss/FireHeadlossSchool";
 import PlumbingRainWaterPipeDropDepot from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropDepot";
 import PlumbingRainWaterPipeDropElevated from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropElevated";
 import PlumbingRainWaterPipeDropUnderground from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropUnderground";
+import PlumbingRainWaterPipeDropResidential from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropResidential";
+import PlumbingRainWaterPipeDropOffice from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropOffice";
+import PlumbingRainWaterPipeDropDataCenter from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropDatacenter";
+import PlumbingRainWaterPipeDropHotel from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropHotel";
+import PlumbingRainWaterPipeDropMall from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropMall";
+import PlumbingRainWaterPipeDropSchool from "./plumbingRainWaterPipeDropping/PlumbingRainWaterPipeDropSchool";
 import SeepagePumpSizingUnderground from "./seepagePumpSizing/SeepagePumpSizingUnderground";
+import SeepagePumpSizingElevated from "./seepagePumpSizing/SeepagePumpSizingElevated";
+import SeepagePumpSizingDepot from "./seepagePumpSizing/SeepagePumpSizingDepot";
+import SeepagePumpSizingResidential from "./seepagePumpSizing/SeepagePumpSizingResidential";
+import SeepagePumpSizingOffice from "./seepagePumpSizing/SeepagePumpSizingOffice";
+import SeepagePumpSizingDataCenter from "./seepagePumpSizing/SeepagePumpSizingDataCenter";
+import SeepagePumpSizingHotel from "./seepagePumpSizing/SeepagePumpSizingHotel";
+import SeepagePumpSizingMall from "./seepagePumpSizing/SeepagePumpSizingMall";
+import SeepagePumpSizingSchool from "./seepagePumpSizing/SeepagePumpSizingSchool";
 import PlumbingRWHDepot from "./plumbingRWH/PlumbingRWHDepot";
 import PlumbingRWHElevated from "./plumbingRWH/PlumbingRWHElevated";
 import PlumbingRWHUnderground from "./plumbingRWH/PlumbingRWHUnderground";
+import PlumbingRWHResidential from "./plumbingRWH/PlumbingRWHResidential";
+import PlumbingRWHOffice from "./plumbingRWH/PlumbingRWHOffice";
+import PlumbingRWHDataCenter from "./plumbingRWH/PlumbingRWHDataCenter";
+import PlumbingRWHHotel from "./plumbingRWH/PlumbingRWHHotel";
+import PlumbingRWHMall from "./plumbingRWH/PlumbingRWHMall";
+import PlumbingRWHSchool from "./plumbingRWH/PlumbingRWHSchool";
 import DailuxResidential from "./dailux/DialuxResidential";
 import DailuxOffice from "./dailux/DialuxOffice";
 import DailuxDataCenter from "./dailux/DialuxDataCenter";
@@ -412,7 +481,36 @@ const FinalDesign = () => {
                     )}
                     {buildingCheck?.label === "Hotel" && <DailuxHotel />}
                     {buildingCheck?.label === "Mall" && <DailuxMall />}
-                    {buildingCheck?.label === "School" && <DailuxSchool />}
+                    {buildingCheck?.label === "Academic" && <DailuxSchool />}
+                  </>
+                )}
+                {subServiceCheck?.label === "Equipment" && (
+                  <>
+                    {buildingCheck?.label === "Elevated Metro Station" && (
+                      <ElectricalPanelElevated />
+                    )}
+                    {buildingCheck?.label === "Underground Metro Station" && (
+                      <ElectricalPanelUnderground />
+                    )}
+                    {buildingCheck?.label === "Depot" && (
+                      <ElectricalPanelDepot />
+                    )}
+                    {buildingCheck?.label === "Residential" && (
+                      <ElectricalPanelResidential />
+                    )}
+                    {buildingCheck?.label === "Office" && (
+                      <ElectricalPanelOffice />
+                    )}
+                    {buildingCheck?.label === "Data Center" && (
+                      <ElectricalPanelDataCenter />
+                    )}
+                    {buildingCheck?.label === "Hotel" && (
+                      <ElectricalPanelHotel />
+                    )}
+                    {buildingCheck?.label === "Mall" && <ElectricalPanelMall />}
+                    {buildingCheck?.label === "Academic" && (
+                      <ElectricalPanelSchool />
+                    )}
                   </>
                 )}
                 {subServiceCheck?.label === "Ventilation" && (
@@ -424,6 +522,18 @@ const FinalDesign = () => {
                       <VentilationUnderground />
                     )}
                     {buildingCheck?.label === "Depot" && <VentilationDepot />}
+                    {buildingCheck?.label === "Residential" && (
+                      <VentilationResidential />
+                    )}
+                    {buildingCheck?.label === "Office" && <VentilationOffice />}
+                    {buildingCheck?.label === "Data Center" && (
+                      <VentilationDataCenter />
+                    )}
+                    {buildingCheck?.label === "Hotel" && <VentilationHotel />}
+                    {buildingCheck?.label === "Mall" && <VentilationMall />}
+                    {buildingCheck?.label === "Academic" && (
+                      <VentilationSchool />
+                    )}
                   </>
                 )}
                 {subServiceCheck?.label === "Containment" && (
@@ -435,6 +545,16 @@ const FinalDesign = () => {
                       <CableUnderground />
                     )}
                     {buildingCheck?.label === "Depot" && <CableDepot />}
+                    {buildingCheck?.label === "Residential" && (
+                      <CableResidential />
+                    )}
+                    {buildingCheck?.label === "Office" && <CableOffice />}
+                    {buildingCheck?.label === "Data Center" && (
+                      <CableDataCenter />
+                    )}
+                    {buildingCheck?.label === "Hotel" && <CableHotel />}
+                    {buildingCheck?.label === "Mall" && <CableMall />}
+                    {buildingCheck?.label === "Academic" && <CableSchool />}
                   </>
                 )}
                 {subServiceCheck?.label === "VRF / VRV" && (
@@ -461,7 +581,7 @@ const FinalDesign = () => {
                         )}
                         {buildingCheck?.label === "Hotel" && <HeatLoadHotel />}
                         {buildingCheck?.label === "Mall" && <HeatLoadMall />}
-                        {buildingCheck?.label === "School" && (
+                        {buildingCheck?.label === "Academic" && (
                           <HeatLoadSchool />
                         )}
                       </>
@@ -492,7 +612,7 @@ const FinalDesign = () => {
                         )}
                         {buildingCheck?.label === "Hotel" && <HeatLoadHotel />}
                         {buildingCheck?.label === "Mall" && <HeatLoadMall />}
-                        {buildingCheck?.label === "School" && (
+                        {buildingCheck?.label === "Academic" && (
                           <HeatLoadSchool />
                         )}
                       </>
@@ -523,23 +643,8 @@ const FinalDesign = () => {
                         )}
                         {buildingCheck?.label === "Hotel" && <HeatLoadHotel />}
                         {buildingCheck?.label === "Mall" && <HeatLoadMall />}
-                        {buildingCheck?.label === "School" && (
+                        {buildingCheck?.label === "Academic" && (
                           <HeatLoadSchool />
-                        )}
-                      </>
-                    )}
-
-                    {action?.label === "equipment load" && (
-                      <>
-                        {buildingCheck?.label === "Elevated Metro Station" && (
-                          <ElectricalPanelElevated />
-                        )}
-                        {buildingCheck?.label ===
-                          "Underground Metro Station" && (
-                          <ElectricalPanelUnderground />
-                        )}
-                        {buildingCheck?.label === "Depot" && (
-                          <ElectricalPanelDepot />
                         )}
                       </>
                     )}
@@ -559,6 +664,24 @@ const FinalDesign = () => {
                         {buildingCheck?.label === "Depot" && (
                           <PlumbingWaterDemandDepot />
                         )}
+                        {buildingCheck?.label === "Residential" && (
+                          <PlumbingWaterDemandResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <PlumbingWaterDemandOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <PlumbingWaterDemandDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <PlumbingWaterDemandHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && (
+                          <PlumbingWaterDemandMall />
+                        )}
+                        {buildingCheck?.label === "Academic" && (
+                          <PlumbingWaterDemandSchool />
+                        )}
                       </>
                     )}
 
@@ -574,6 +697,24 @@ const FinalDesign = () => {
                         {buildingCheck?.label === "Depot" && (
                           <PlumbingHeadlossDepot />
                         )}
+                        {buildingCheck?.label === "Residential" && (
+                          <PlumbingHeadlossResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <PlumbingHeadlossOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <PlumbingHeadlossDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <PlumbingHeadlossHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && (
+                          <PlumbingHeadlossMall />
+                        )}
+                        {buildingCheck?.label === "Academic" && (
+                          <PlumbingHeadlossSchool />
+                        )}
                       </>
                     )}
 
@@ -588,6 +729,24 @@ const FinalDesign = () => {
                         )}
                         {buildingCheck?.label === "Depot" && (
                           <PlumbingWaterSupplyPipeSizingDepot />
+                        )}
+                        {buildingCheck?.label === "Residential" && (
+                          <PlumbingWaterSupplyPipeSizingResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <PlumbingWaterSupplyPipeSizingOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <PlumbingWaterSupplyPipeSizingDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <PlumbingWaterSupplyPipeSizingHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && (
+                          <PlumbingWaterSupplyPipeSizingMall />
+                        )}
+                        {buildingCheck?.label === "Academic" && (
+                          <PlumbingWaterSupplyPipeSizingSchool />
                         )}
                       </>
                     )}
@@ -605,6 +764,20 @@ const FinalDesign = () => {
                           <DrainageUnderground />
                         )}
                         {buildingCheck?.label === "Depot" && <DrainageDepot />}
+                        {buildingCheck?.label === "Residential" && (
+                          <DrainageResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <DrainageOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <DrainageDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && <DrainageHotel />}
+                        {buildingCheck?.label === "Mall" && <DrainageMall />}
+                        {buildingCheck?.label === "Academic" && (
+                          <DrainageSchool />
+                        )}
                       </>
                     )}
 
@@ -620,14 +793,56 @@ const FinalDesign = () => {
                         {buildingCheck?.label === "Depot" && (
                           <PlumbingRainWaterPipeDropDepot />
                         )}
+                        {buildingCheck?.label === "Residential" && (
+                          <PlumbingRainWaterPipeDropResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <PlumbingRainWaterPipeDropOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <PlumbingRainWaterPipeDropDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <PlumbingRainWaterPipeDropHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && (
+                          <PlumbingRainWaterPipeDropMall />
+                        )}
+                        {buildingCheck?.label === "Academic" && (
+                          <PlumbingRainWaterPipeDropSchool />
+                        )}
                       </>
                     )}
 
                     {action?.label === "seepage pump sizing underground" && (
                       <>
+                        {buildingCheck?.label === "Elevated Metro Station" && (
+                          <SeepagePumpSizingElevated />
+                        )}
                         {buildingCheck?.label ===
                           "Underground Metro Station" && (
                           <SeepagePumpSizingUnderground />
+                        )}
+                        {buildingCheck?.label === "Depot" && (
+                          <SeepagePumpSizingDepot />
+                        )}
+                        {buildingCheck?.label === "Residential" && (
+                          <SeepagePumpSizingResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <SeepagePumpSizingOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <SeepagePumpSizingDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <SeepagePumpSizingHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && (
+                          <SeepagePumpSizingMall />
+                        )}
+                        {buildingCheck?.label === "Academic" && (
+                          <SeepagePumpSizingSchool />
                         )}
                       </>
                     )}
@@ -644,13 +859,29 @@ const FinalDesign = () => {
                         {buildingCheck?.label === "Depot" && (
                           <PlumbingRWHDepot />
                         )}
+                        {buildingCheck?.label === "Residential" && (
+                          <PlumbingRWHResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <PlumbingRWHOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <PlumbingRWHDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <PlumbingRWHHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && <PlumbingRWHMall />}
+                        {buildingCheck?.label === "Academic" && (
+                          <PlumbingRWHSchool />
+                        )}
                       </>
                     )}
                   </>
                 )}
                 {subServiceCheck?.label === "Hydrant System" && (
                   <>
-                    {action?.label === "head loss calculation" && (
+                    {action?.label === "headloss calculation" && (
                       <>
                         {buildingCheck?.label === "Elevated Metro Station" && (
                           <FireHeadlossElevated />
@@ -659,9 +890,27 @@ const FinalDesign = () => {
                           "Underground Metro Station" && (
                           <FireHeadlossUnderground />
                         )}
-                        {/* {buildingCheck?.label === "Depot" && (
+                        {buildingCheck?.label === "Depot" && (
                           <FireHeadlossDepot />
-                        )} */}
+                        )}
+                        {buildingCheck?.label === "Residential" && (
+                          <FireHeadlossResidential />
+                        )}
+                        {buildingCheck?.label === "Office" && (
+                          <FireHeadlossOffice />
+                        )}
+                        {buildingCheck?.label === "Data Center" && (
+                          <FireHeadlossDataCenter />
+                        )}
+                        {buildingCheck?.label === "Hotel" && (
+                          <FireHeadlossHotel />
+                        )}
+                        {buildingCheck?.label === "Mall" && (
+                          <FireHeadlossMall />
+                        )}
+                        {buildingCheck?.label === "Academic" && (
+                          <FireHeadlossSchool />
+                        )}
                       </>
                     )}
                   </>

@@ -1,18 +1,17 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const HeatLoadResidential = () => {
+const VentilationResidential = () => {
   const panelDetails = [
-    "Inside Temperature",
-    "Equipment Heat Disipetion",
-    "Occupancy",
-    "Light Load",
     "Area",
     "Height",
-    "Sensible Heat",
-    "Type of Glass / U-Factor",
-    "Wall",
-    "Partition / U-Factor",
+    "Air Changes per Hour",
+    "Number of Fans",
+    "Light Load",
+    "Equimpment Heat dissipation",
+    "Air inlet temp",
+    "Inside temp",
+    "Equilent no. of air Change",
   ];
 
   const fieldDetails = [
@@ -68,7 +67,7 @@ const HeatLoadResidential = () => {
 
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">HEAT LOAD - RESIDENTIAL</h2>
+      <h2 className="text-xl font-bold mb-4">VENTILATION - RESIDENTIAL</h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
@@ -92,4 +91,4 @@ const HeatLoadResidential = () => {
   );
 };
 
-export default HeatLoadResidential;
+export default VentilationResidential;

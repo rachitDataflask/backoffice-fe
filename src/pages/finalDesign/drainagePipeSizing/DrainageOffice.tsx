@@ -1,24 +1,23 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const SeepagePumpSizingUnderground = () => {
-  const panelDetails = ["Seepage Sump sizing calculations"];
+const DrainageOffice = () => {
+  const panelDetails = ["MALE TOILET", "FEMALE TOILET", "HANDICAP TOILET"];
 
   const fieldDetails = [
-    { name: "retaining_wall_area", label: "Retaining Wall Area" },
-    {
-      name: "seepage_generation_rate_peak_season",
-      label: "Seepage Generation Rate at Peak Season",
-    },
-    { name: "station_cleaning_area", label: "Station Cleaning Area" },
-    { name: "number_of_hydrants", label: "Number of Hydrants" },
+    { name: "velocity", label: "Velocity" },
+    { name: "number_of_wc", label: "Number of WC" },
+    { name: "number_of_wb", label: "Number of WB" },
+    { name: "number_of_urinal", label: "Number of Urinal" },
+    { name: "number_of_shower", label: "Number of Shower" },
+    { name: "number_of_tap", label: "Number of Tap" },
+    { name: "operational_hour", label: "Operational Hour" },
+    { name: "diversity", label: "Diversity" },
   ];
 
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">
-        SEEPAGE PUMP SIZING - UNDERGROUND
-      </h2>
+      <h2 className="text-xl font-bold mb-4">DRAINAGE PIPE SIZING (OFFICE)</h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
@@ -26,13 +25,12 @@ const SeepagePumpSizingUnderground = () => {
             <Divider />
           </Box>
           <Box className="grid grid-cols-4 gap-4 mb-4">
-            {fieldDetails?.map(({ name, label }) => (
+            {fieldDetails.map(({ name, label }) => (
               <RHFTextField
                 key={`${section}.${name}`}
                 name={`${section.replace(/\s+/g, "_").toLowerCase()}.${name}`}
                 label={label}
                 rules={{ required: "This field is required" }}
-                type="number"
               />
             ))}
           </Box>
@@ -42,4 +40,4 @@ const SeepagePumpSizingUnderground = () => {
   );
 };
 
-export default SeepagePumpSizingUnderground;
+export default DrainageOffice;

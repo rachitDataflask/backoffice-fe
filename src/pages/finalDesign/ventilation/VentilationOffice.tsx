@@ -1,8 +1,20 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const DailuxOffice = () => {
-  const rooms = [
+const VentilationOffice = () => {
+  const panelDetails = [
+    "Area",
+    "Height",
+    "Air Changes per Hour",
+    "Number of Fans",
+    "Light Load",
+    "Equimpment Heat dissipation",
+    "Air inlet temp",
+    "Inside temp",
+    "Equilent no. of air Change",
+  ];
+
+  const fieldDetails = [
     { name: "Reception_Desk", label: "Reception Desk" },
     { name: "Waiting_Lounge", label: "Waiting Lounge" },
     { name: "Security_Desk_Turnstiles", label: "Security Desk/Turnstiles" },
@@ -95,29 +107,17 @@ const DailuxOffice = () => {
     { name: "Bicycle_Racks", label: "Bicycle Racks" },
   ];
 
-  const sections = [
-    "Lux Level",
-    "Uniformity",
-    "Area",
-    "Light Fixture",
-    "Mounting Height",
-    "Maintenance factor",
-    "Reflectance factor",
-    "Wall zone",
-    "Work plane",
-  ];
-
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">Dailux (Office)</h2>
-      {sections.map((section, index) => (
+      <h2 className="text-xl font-bold mb-4">VENTILATION - OFFICE</h2>
+      {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
             <h2 className="mb-2">{section}</h2>
             <Divider />
           </Box>
           <Box className="grid grid-cols-4 gap-4 mb-4">
-            {rooms.map(({ name, label }) => (
+            {fieldDetails.map(({ name, label }) => (
               <RHFTextField
                 key={`${section}.${name}`}
                 name={`${section.replace(/\s+/g, "_").toLowerCase()}.${name}`}
@@ -133,4 +133,4 @@ const DailuxOffice = () => {
   );
 };
 
-export default DailuxOffice;
+export default VentilationOffice;

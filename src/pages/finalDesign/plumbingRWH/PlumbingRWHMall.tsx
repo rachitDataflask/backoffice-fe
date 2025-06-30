@@ -1,24 +1,23 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const SeepagePumpSizingUnderground = () => {
-  const panelDetails = ["Seepage Sump sizing calculations"];
+const PlumbingRWHMall = () => {
+  const panelDetails = ["STATION BUILDING", "ANCILLARY BUILDING"];
 
   const fieldDetails = [
-    { name: "retaining_wall_area", label: "Retaining Wall Area" },
-    {
-      name: "seepage_generation_rate_peak_season",
-      label: "Seepage Generation Rate at Peak Season",
-    },
-    { name: "station_cleaning_area", label: "Station Cleaning Area" },
-    { name: "number_of_hydrants", label: "Number of Hydrants" },
+    { name: "roof_area_coefficient", label: "Roof Area Coefficient" },
+    { name: "green_area_coefficient", label: "Green Area Coefficient" },
+    { name: "footpath_area_coefficient", label: "Footpath Area Coefficient" },
+    { name: "roof_area", label: "Roof Area" },
+    { name: "green_area", label: "Green Area" },
+    { name: "footpath_area", label: "Footpath Area" },
+    { name: "storage_time", label: "Storage Time" },
+    { name: "number_of_harvesting_pits", label: "Number of Harvesting Pits" },
   ];
 
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">
-        SEEPAGE PUMP SIZING - UNDERGROUND
-      </h2>
+      <h2 className="text-xl font-bold mb-4">RWH CALCULATION - MALL</h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
@@ -42,4 +41,4 @@ const SeepagePumpSizingUnderground = () => {
   );
 };
 
-export default SeepagePumpSizingUnderground;
+export default PlumbingRWHMall;

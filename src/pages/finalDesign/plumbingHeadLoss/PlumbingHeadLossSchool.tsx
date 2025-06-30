@@ -1,16 +1,18 @@
 import { Box, Divider } from "@mui/material";
 import RHFTextField from "../../../components/RHF/RHFTextField";
 
-const FireHeadlossElevated = () => {
+const PlumbingHeadlossSchool = () => {
   const panelDetails = [
-    "80 MM DIA MS PIPE",
-    "100 MM DIA MS PIPE",
-    "150 MM DIA MS PIPE",
-    "200 MM DIA MS PIPE",
+    "15 MM DIA GI PIPE",
+    "20 MM DIA GI PIPE",
+    "25 MM DIA GI PIPE",
+    "32 MM DIA GI PIPE",
+    "40 MM DIA GI PIPE",
+    "50 MM DIA GI PIPE",
+    "65 MM DIA GI PIPE",
     "80 MM DIA GI PIPE",
     "100 MM DIA GI PIPE",
     "150 MM DIA GI PIPE",
-    "200 MM DIA GI PIPE",
   ];
 
   const fieldDetails = [
@@ -26,9 +28,10 @@ const FireHeadlossElevated = () => {
     { name: "butterfly_valve", label: "Butterfly Valve" },
     { name: "non_return_valve", label: "Non Return Valve" },
   ];
+
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">PLUMBING HEADLOSS (ELEVATED)</h2>
+      <h2 className="text-xl font-bold mb-4">PLUMBING HEADLOSS (ACADEMIC)</h2>
       {panelDetails.map((section, index) => (
         <Box className="flex flex-col gap-4" key={index}>
           <Box>
@@ -51,4 +54,4 @@ const FireHeadlossElevated = () => {
   );
 };
 
-export default FireHeadlossElevated;
+export default PlumbingHeadlossSchool;
